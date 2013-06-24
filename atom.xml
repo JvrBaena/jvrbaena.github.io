@@ -4,7 +4,7 @@
   <title><![CDATA[Javier Baena]]></title>
   <link href="http://JvrBaena.github.io/atom.xml" rel="self"/>
   <link href="http://JvrBaena.github.io/"/>
-  <updated>2013-06-24T23:41:45+02:00</updated>
+  <updated>2013-06-25T00:06:42+02:00</updated>
   <id>http://JvrBaena.github.io/</id>
   <author>
     <name><![CDATA[Javier Baena]]></name>
@@ -12,5 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[New Blog :)]]></title>
+    <link href="http://JvrBaena.github.io/blog/2013/06/24/new-blog/"/>
+    <updated>2013-06-24T23:55:00+02:00</updated>
+    <id>http://JvrBaena.github.io/blog/2013/06/24/new-blog</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Welcome to my new blog&quot;</span><span class="p">);</span>   
+</span><span class='line'><span class="p">},</span> <span class="mi">5000</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Just wanted to finally try Octopress and have a place to share tips, tricks, and lessons
+learnt from my day to day ;)</p>
+]]></content>
+  </entry>
   
 </feed>
