@@ -4,8 +4,8 @@
 
 url: http://JvrBaena.github.io
 title: Javier Baena
-subtitle: sudo valar_morghulis | valar_dohaeris
-author: Javier
+subtitle: "$ sudo valar_morghulis | valar_dohaeris"
+author: Javier Baena
 simple_search: http://google.com/search
 description: "Tips, tricks, hacks and stuff"
 
@@ -98,3 +98,6 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: true
+
+#Linkedin
+linkedin_user: javierbaena
