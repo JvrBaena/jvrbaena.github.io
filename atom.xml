@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-
   <title><![CDATA[Javier Baena]]></title>
   <link href="http://JvrBaena.github.io/atom.xml" rel="self"/>
   <link href="http://JvrBaena.github.io/"/>
-  <updated>2013-06-24T23:18:40+02:00</updated>
+  <updated>2013-06-24T23:26:36+02:00</updated>
   <id>http://JvrBaena.github.io/</id>
   <author>
     <name><![CDATA[Javier]]></name>
