@@ -9,10 +9,7 @@
   <meta name="author" content="Javier Baena">
 
   
-  <meta name="description" content="Javier Baena $ sudo valar_morghulis | valar_dohaeris Jun 24th, 2013 Comments New Blog :) 1
-2
-3
-setTimeout(function() { console.log(&quot;Welcome to &hellip;">
+  <meta name="description" content="Javier Baena $ sudo valar_morghulis | valar_dohaeris Jun 25th, 2013 Comments Cleaning old local branches with git When working with a branch-per- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -38,6 +35,18 @@ setTimeout(function() { console.log(&quot;Welcome to &hellip;">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-42004931-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -50,6 +59,10 @@ setTimeout(function() { console.log(&quot;Welcome to &hellip;">
         </a>
   	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
   	      <ul class="nav">
+    
+        <li class="active"><a href="/index.html">Home</a></li>
+    
+        <li ><a href="/blog/archives/index.html">Archives</a></li>
     
 </ul>
 
@@ -85,6 +98,63 @@ setTimeout(function() { console.log(&quot;Welcome to &hellip;">
 
 <div class="blog-index">
   
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2013-06-25T23:41:00+02:00" pubdate data-updated="true">Jun 25<span>th</span>, 2013</time></h5>
+          <div class="row-fluid">
+          
+          <a href="http://JvrBaena.github.io/blog/2013/06/25/cleaning-old-local-branches-with-git/#disqus_thread">Comments </a> <span class="fui-bubble-16"></span>
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/blog/2013/06/25/cleaning-old-local-branches-with-git/">Cleaning old local branches with git</a></h1>
+      <p>When working with a branch-per-feature approach, I tend to forget to delete my local branches
+when they are completely merged (my bad, I know :P).</p>
+
+<p>My workmate <a href="http://twitter.com/ivanguardado">@ivanguardado</a> came up with this useful snippet to
+delete at once all local branches that have already been merged to master.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git​ branch --merged master | grep -v <span class="s1">&#39;master$&#39;</span> | xargs ​git​ branch -d
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Simple!</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
   
   
     <article>

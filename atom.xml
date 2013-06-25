@@ -4,7 +4,7 @@
   <title><![CDATA[Javier Baena]]></title>
   <link href="http://JvrBaena.github.io/atom.xml" rel="self"/>
   <link href="http://JvrBaena.github.io/"/>
-  <updated>2013-06-25T18:59:48+02:00</updated>
+  <updated>2013-06-25T23:49:41+02:00</updated>
   <id>http://JvrBaena.github.io/</id>
   <author>
     <name><![CDATA[Javier Baena]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Cleaning old local branches with git]]></title>
+    <link href="http://JvrBaena.github.io/blog/2013/06/25/cleaning-old-local-branches-with-git/"/>
+    <updated>2013-06-25T23:41:00+02:00</updated>
+    <id>http://JvrBaena.github.io/blog/2013/06/25/cleaning-old-local-branches-with-git</id>
+    <content type="html"><![CDATA[<p>When working with a branch-per-feature approach, I tend to forget to delete my local branches
+when they are completely merged (my bad, I know :P).</p>
+
+<p>My workmate <a href="http://twitter.com/ivanguardado">@ivanguardado</a> came up with this useful snippet to
+delete at once all local branches that have already been merged to master.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git​ branch --merged master | grep -v <span class="s1">&#39;master$&#39;</span> | xargs ​git​ branch -d
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Simple!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[New Blog :)]]></title>
