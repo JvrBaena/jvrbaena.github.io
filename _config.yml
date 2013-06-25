@@ -94,10 +94,18 @@ disqus_short_name: jvrbaena
 disqus_show_comment_count: true
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-42004931-1
 
 # Facebook Like
 facebook_like: true
 
 #Linkedin
 linkedin_user: javierbaena
+
+# Navigation #
+navigation:
+- text: Home
+  url: /index.html
+- text: Archives
+  url: /blog/archives/index.html
+
