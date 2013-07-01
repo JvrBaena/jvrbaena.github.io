@@ -4,7 +4,7 @@
   <title><![CDATA[Javier Baena]]></title>
   <link href="http://JvrBaena.github.io/atom.xml" rel="self"/>
   <link href="http://JvrBaena.github.io/"/>
-  <updated>2013-06-25T23:49:41+02:00</updated>
+  <updated>2013-07-02T00:19:43+02:00</updated>
   <id>http://JvrBaena.github.io/</id>
   <author>
     <name><![CDATA[Javier Baena]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Currently Reading]]></title>
+    <link href="http://JvrBaena.github.io/blog/2013/07/02/currently-reading/"/>
+    <updated>2013-07-02T00:08:00+02:00</updated>
+    <id>http://JvrBaena.github.io/blog/2013/07/02/currently-reading</id>
+    <content type="html"><![CDATA[<p><img class="left" src="http://JvrBaena.github.io/images/unixlinux.jpg" width="350" height="450" title="UNIX and Linux System Administration Handbook (4th Edition)" ></p>
+
+<p>Every time I see our sysadmin doing his&hellip; well, sysadmin stuff, I think to myself: &ldquo;When are you going to boost your sysadmin skills??&rdquo;. So I have decided to forget all I know about system administration (done! that was easy) and give this book a go.</p>
+
+<p>I&rsquo;ll keep you posted as I learn&hellip; this is going to take me some time, I am afraid!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cleaning old local branches with git]]></title>
