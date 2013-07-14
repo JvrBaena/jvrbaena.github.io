@@ -4,7 +4,7 @@
   <title><![CDATA[Javier Baena]]></title>
   <link href="http://JvrBaena.github.io/atom.xml" rel="self"/>
   <link href="http://JvrBaena.github.io/"/>
-  <updated>2013-07-02T00:19:43+02:00</updated>
+  <updated>2013-07-14T23:50:46+02:00</updated>
   <id>http://JvrBaena.github.io/</id>
   <author>
     <name><![CDATA[Javier Baena]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Node.js, Arduino & Raspberry Pi (I)]]></title>
+    <link href="http://JvrBaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/"/>
+    <updated>2013-07-14T22:41:00+02:00</updated>
+    <id>http://JvrBaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi</id>
+    <content type="html"><![CDATA[<p>I have recently completed a course about environmental monitorization with Arduino, and once completed, I decided
+that I wanted to go a little further in the use of Arduino with Javascript.</p>
+
+<p>Some time ago, when I didn&rsquo;t have any Arduino board of my own, I already tinkered a little bit using the board of a friend, with the help of a library called <a href="https://github.com/rwldrn/johnny-five">Jhonny-Five</a> by <a href="http://twitter.com/rwaldron">@rwaldron</a>, which has become sort of the standard for using Arduino with Javascript (You can read more about javascript-controlled robots <a href="http://voodootikigod.com/nodebots-the-rise-of-js-robotics/">here</a>).</p>
+
+<p>However, the Arduino board I got with my course, was an Arduino Leonardo, not an Arduino UNO, which was the model of the board that we had used previously.
+Apparently, there are some issues with Johnny-Five that make it wise to compile it using the Arduino 1.0 IDE and Standard Firmata. The Arduino Leonardo does not appear as a selectable board in the Arduino 1.0 IDE, and, although there seems to exist some <a href="https://github.com/rwldrn/johnny-five/issues/53#issuecomment-11931914">workarounds</a>, I wasn&rsquo;t able to make it work (the board connected but didn&rsquo;t respond).</p>
+
+<p>So! Fear not! I found another npm package for Javascript communication with Arduino: <a href="https://github.com/ecto/duino">Duino</a> and this one worked perfectly :)</p>
+
+<p>Load the duino framework to your Arduino board, and then, try:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">arduino</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;duino&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">arduino</span><span class="p">.</span><span class="nx">Board</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">arduino</span><span class="p">.</span><span class="nx">Led</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">board</span><span class="o">:</span> <span class="nx">board</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">pin</span><span class="o">:</span> <span class="mi">13</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">led</span><span class="p">.</span><span class="nx">blink</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And if you have correctly placed a LED in the PIN 13, you should be seeing it blinking right now.</p>
+
+<p>Ok! So now we are talking to our Arduino board from our laptop, using Javascript. Nice!
+But&hellip; although I think this is pretty cool, I don&rsquo;t like the fact that it is not so &ldquo;portable&rdquo;. I mean, if you want to develop some kind of cool stuff using Javascript to monitorize your orchard (for example), I don&rsquo;t think you&rsquo;ll want to leave your laptop in the field :).</p>
+
+<p>So&hellip; enter the Raspberry Pi!</p>
+
+<p>What about deploying your code to a Raspberry Pi, talking to the Arduino board via serial port?</p>
+
+<p>Apparently it should work, as a Raspberry Pi should have no problem running Node.js&hellip; but I found a couple of problems I had to solve before seeing it working.</p>
+
+<p>We&rsquo;ll see this problems and how to solve them in the next post :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Currently Reading]]></title>
