@@ -4,7 +4,7 @@
   <title><![CDATA[Javier Baena]]></title>
   <link href="http://JvrBaena.github.io/atom.xml" rel="self"/>
   <link href="http://JvrBaena.github.io/"/>
-  <updated>2013-07-15T23:15:47+02:00</updated>
+  <updated>2013-07-15T23:19:28+02:00</updated>
   <id>http://JvrBaena.github.io/</id>
   <author>
     <name><![CDATA[Javier Baena]]></name>
@@ -21,6 +21,9 @@
     <content type="html"><![CDATA[<p>In our <a href="http://jvrbaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/">last post</a> we talked about talking to Arduino with Javascript. We used the framework <a href="https://github.com/ecto/duino">Duino</a> as a workaround when your Arduino board, as mine, is not the best suited for running <a href="https://github.com/rwldrn/johnny-five">Jhonny-Five</a> (or if you can&rsquo;t manage to make it work, as it was my case).</p>
 
 <p>Our next step: Repeat our current achievements from a Raspberry Pi connected to our Arduino board.</p>
+
+<!--more-->
+
 
 <p>First of all, you obviously need to install Node.js in your Raspberry Pi. To do that, I followed the step &ldquo;Installing Node.JS&rdquo; from <a href="http://blog.rueedlinger.ch/2013/03/raspberry-pi-and-nodejs-basic-setup/">this post</a>. I ignored the steps for changing the IP address to a static address and the start script, as we will cover (and go further) these aspects when turning our Raspberry Pi into an AP.</p>
 
@@ -162,6 +165,9 @@ The problem is that our Arduino board, when plugged into our Raspberry Pi, will 
 that I wanted to go a little further in the use of Arduino with Javascript.</p>
 
 <p>Some time ago, when I didn&rsquo;t have any Arduino board of my own, I already tinkered a little bit using the board of a friend, with the help of a library called <a href="https://github.com/rwldrn/johnny-five">Jhonny-Five</a> by <a href="http://twitter.com/rwaldron">@rwaldron</a>, which has become sort of the standard for using Arduino with Javascript (You can read more about javascript-controlled robots <a href="http://voodootikigod.com/nodebots-the-rise-of-js-robotics/">here</a>).</p>
+
+<!--more-->
+
 
 <p>However, the Arduino board I got with my course, was an Arduino Leonardo, not an Arduino UNO, which was the model of the board that we had used previously.
 Apparently, there are some issues with Johnny-Five that make it wise to compile it using the Arduino 1.0 IDE and Standard Firmata. The Arduino Leonardo does not appear as a selectable board in the Arduino 1.0 IDE, and, although there seems to exist some <a href="https://github.com/rwldrn/johnny-five/issues/53#issuecomment-11931914">workarounds</a>, I wasn&rsquo;t able to make it work (the board connected but didn&rsquo;t respond).</p>

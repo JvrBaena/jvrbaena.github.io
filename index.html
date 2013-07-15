@@ -135,137 +135,9 @@
 
 <p>Our next step: Repeat our current achievements from a Raspberry Pi connected to our Arduino board.</p>
 
-<p>First of all, you obviously need to install Node.js in your Raspberry Pi. To do that, I followed the step &ldquo;Installing Node.JS&rdquo; from <a href="http://blog.rueedlinger.ch/2013/03/raspberry-pi-and-nodejs-basic-setup/">this post</a>. I ignored the steps for changing the IP address to a static address and the start script, as we will cover (and go further) these aspects when turning our Raspberry Pi into an AP.</p>
-
-<p>So now, with Node.js running in my Raspberry Pi, I promptly plugged my Arduino board, set the classic 13-pin-led configuration and the code we saw in the last post:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">arduino</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;duino&#39;</span><span class="p">),</span>
-</span><span class='line'>    <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">arduino</span><span class="p">.</span><span class="nx">Board</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">arduino</span><span class="p">.</span><span class="nx">Led</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">board</span><span class="o">:</span> <span class="nx">board</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">pin</span><span class="o">:</span> <span class="mi">13</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">led</span><span class="p">.</span><span class="nx">blink</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And&hellip;. it didn&rsquo;t work.</p>
-
-<p>What happened?</p>
-
-<p>After some debugging I found that the Board.js file from Duino, when searching for the serial port where the Arduino is supposed to be plugged, runs this code:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">Board</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">detect</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;attempting to find Arduino board&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">child</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s1">&#39;ls /dev | grep usb&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">stdout</span><span class="p">,</span> <span class="nx">stderr</span><span class="p">){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">usb</span> <span class="o">=</span> <span class="nx">stdout</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">),</span>
-</span><span class='line'>        <span class="nx">found</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">err</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">possible</span><span class="p">,</span> <span class="nx">temp</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">while</span> <span class="p">(</span> <span class="nx">usb</span><span class="p">.</span><span class="nx">length</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">possible</span> <span class="o">=</span> <span class="nx">usb</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">possible</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">!==</span> <span class="s1">&#39;cu&#39;</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">try</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">serial</span><span class="p">.</span><span class="nx">SerialPort</span><span class="p">(</span><span class="s1">&#39;/dev/&#39;</span> <span class="o">+</span> <span class="nx">possible</span><span class="p">,</span> <span class="p">{</span>
-</span><span class='line'>            <span class="nx">baudrate</span><span class="o">:</span> <span class="nx">self</span><span class="p">.</span><span class="nx">baudrate</span><span class="p">,</span>
-</span><span class='line'>            <span class="nx">parser</span><span class="o">:</span> <span class="nx">serial</span><span class="p">.</span><span class="nx">parsers</span><span class="p">.</span><span class="nx">readline</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">)</span>
-</span><span class='line'>          <span class="p">});</span>
-</span><span class='line'>        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">err</span> <span class="o">=</span> <span class="nx">e</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">found</span> <span class="o">=</span> <span class="nx">temp</span><span class="p">;</span>
-</span><span class='line'>          <span class="nx">self</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;found board at &#39;</span> <span class="o">+</span> <span class="nx">temp</span><span class="p">.</span><span class="nx">port</span><span class="p">);</span>
-</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">err</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Could not find Arduino&#39;</span><span class="p">);</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">found</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>More precisely, this line:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ls /dev | grep usb
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This command was returning&hellip; nothing, so the Board class wasn&rsquo;t able to see where was the Arduino plugged.
-The problem is that our Arduino board, when plugged into our Raspberry Pi, will appear (at least in my Rpi), as ttyACM0 or ttyACM1, and the grep command as it is, will not return any suitable device.</p>
-
-<p>I forked the project to make some experiments (you can find my fork <a href="https://github.com/JvrBaena/duino">here</a>), and replaced the grep command for</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ls /dev | grep -E <span class="s1">&#39;usb|ttyACM*&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And bang! it worked!</p>
-
-<p><img class="center" src="/images/rpi-arduino.jpg" width="500" height="500" title="Raspberry Pi talking to Arduino via Javascript" ></p>
-
-<p>Now our Raspberry Pi is running some Javascript code and talking to our Arduino board!</p>
-
-<p>Next step?: Deploy a full Node.js server into our Raspberry Pi to offer a proper HTML5 interface to control our Arduino board and set the Raspberry Pi as an AP so that we can connect to it.</p>
-
-<p>We&rsquo;ll talk about this in our next post :D</p>
 
       
-      
+       <a href="/blog/2013/07/15/node-dot-js-arduino-raspberry-pi-ii/">Read on &rarr;</a> 
     </div>
   </div>
 
@@ -313,49 +185,9 @@ that I wanted to go a little further in the use of Arduino with Javascript.</p>
 
 <p>Some time ago, when I didn&rsquo;t have any Arduino board of my own, I already tinkered a little bit using the board of a friend, with the help of a library called <a href="https://github.com/rwldrn/johnny-five">Jhonny-Five</a> by <a href="http://twitter.com/rwaldron">@rwaldron</a>, which has become sort of the standard for using Arduino with Javascript (You can read more about javascript-controlled robots <a href="http://voodootikigod.com/nodebots-the-rise-of-js-robotics/">here</a>).</p>
 
-<p>However, the Arduino board I got with my course, was an Arduino Leonardo, not an Arduino UNO, which was the model of the board that we had used previously.
-Apparently, there are some issues with Johnny-Five that make it wise to compile it using the Arduino 1.0 IDE and Standard Firmata. The Arduino Leonardo does not appear as a selectable board in the Arduino 1.0 IDE, and, although there seems to exist some <a href="https://github.com/rwldrn/johnny-five/issues/53#issuecomment-11931914">workarounds</a>, I wasn&rsquo;t able to make it work (the board connected but didn&rsquo;t respond).</p>
-
-<p>So! Fear not! I found another npm package for Javascript communication with Arduino: <a href="https://github.com/ecto/duino">Duino</a> and this one worked perfectly :)</p>
-
-<p>Load the duino framework to your Arduino board, and then, try:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">arduino</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;duino&#39;</span><span class="p">),</span>
-</span><span class='line'>    <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">arduino</span><span class="p">.</span><span class="nx">Board</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">arduino</span><span class="p">.</span><span class="nx">Led</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">board</span><span class="o">:</span> <span class="nx">board</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">pin</span><span class="o">:</span> <span class="mi">13</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">led</span><span class="p">.</span><span class="nx">blink</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And if you have correctly placed a LED in the PIN 13, you should be seeing it blinking right now.</p>
-
-<p>Ok! So now we are talking to our Arduino board from our laptop, using Javascript. Nice!
-But&hellip; although I think this is pretty cool, I don&rsquo;t like the fact that it is not so &ldquo;portable&rdquo;. I mean, if you want to develop some kind of cool stuff using Javascript to monitorize your orchard (for example), I don&rsquo;t think you&rsquo;ll want to leave your laptop in the field :).</p>
-
-<p>So&hellip; enter the Raspberry Pi!</p>
-
-<p>What about deploying your code to a Raspberry Pi, talking to the Arduino board via serial port?</p>
-
-<p>Apparently it should work, as a Raspberry Pi should have no problem running Node.js&hellip; but I found a couple of problems I had to solve before seeing it working.</p>
-
-<p>We&rsquo;ll see this problems and how to solve them in the next post :)</p>
 
       
-      
+       <a href="/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/">Read on &rarr;</a> 
     </div>
   </div>
 
