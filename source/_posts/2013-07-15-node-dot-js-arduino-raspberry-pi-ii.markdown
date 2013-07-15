@@ -9,7 +9,7 @@ categories:
 In our [last post](http://jvrbaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/) we talked about talking to Arduino with Javascript. We used the framework [Duino](https://github.com/ecto/duino) as a workaround when your Arduino board, as mine, is not the best suited for running [Jhonny-Five](https://github.com/rwldrn/johnny-five) (or if you can't manage to make it work, as it was my case).
 
 Our next step: Repeat our current achievements from a Raspberry Pi connected to our Arduino board.
-
+<!--more-->
 First of all, you obviously need to install Node.js in your Raspberry Pi. To do that, I followed the step "Installing Node.JS" from [this post](http://blog.rueedlinger.ch/2013/03/raspberry-pi-and-nodejs-basic-setup/). I ignored the steps for changing the IP address to a static address and the start script, as we will cover (and go further) these aspects when turning our Raspberry Pi into an AP.
 
 So now, with Node.js running in my Raspberry Pi, I promptly plugged my Arduino board, set the classic 13-pin-led configuration and the code we saw in the last post:

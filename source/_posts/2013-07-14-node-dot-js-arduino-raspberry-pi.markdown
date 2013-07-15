@@ -9,7 +9,7 @@ I have recently completed a course about environmental monitorization with Ardui
 that I wanted to go a little further in the use of Arduino with Javascript.
 
 Some time ago, when I didn't have any Arduino board of my own, I already tinkered a little bit using the board of a friend, with the help of a library called [Jhonny-Five](https://github.com/rwldrn/johnny-five) by [@rwaldron](http://twitter.com/rwaldron), which has become sort of the standard for using Arduino with Javascript (You can read more about javascript-controlled robots [here](http://voodootikigod.com/nodebots-the-rise-of-js-robotics/)).
-
+<!--more-->
 However, the Arduino board I got with my course, was an Arduino Leonardo, not an Arduino UNO, which was the model of the board that we had used previously.
 Apparently, there are some issues with Johnny-Five that make it wise to compile it using the Arduino 1.0 IDE and Standard Firmata. The Arduino Leonardo does not appear as a selectable board in the Arduino 1.0 IDE, and, although there seems to exist some [workarounds](https://github.com/rwldrn/johnny-five/issues/53#issuecomment-11931914), I wasn't able to make it work (the board connected but didn't respond).
 
