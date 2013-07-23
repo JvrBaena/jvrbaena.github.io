@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Node.js, Arduino & Raspberry Pi (I) - Javier Baena</title>
+  <title>Node.js, Arduino & Raspberry Pi: Reboot - Javier Baena</title>
   <meta name="author" content="Javier Baena">
 
   
-  <meta name="description" content="Node.js, Arduino & Raspberry Pi (I) Jul 14th, 2013 UPDATE: Johnny-Five is fully working now! read more about it here! I have recently completed a &hellip;">
+  <meta name="description" content="Node.js, Arduino & Raspberry Pi: Reboot Jul 23rd, 2013 This post is sort of a reboot for our Node.js, Arduino &amp; Raspberry Pi series (you can &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://JvrBaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi">
+  <link rel="canonical" href="http://JvrBaena.github.io/blog/2013/07/23/node-dot-js-arduino-raspberry-pi-reboot">
   <link href="/favicon.png" rel="icon">
   <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
@@ -94,7 +94,7 @@
 
   <header>
   <div class="jumbotron">
-    Node.js, Arduino & Raspberry Pi (I)
+    Node.js, Arduino & Raspberry Pi: Reboot
 	<h5>
 
 
@@ -107,61 +107,49 @@
   
 
 
-<i class="icon-calendar-empty"></i> <time datetime="2013-07-14T22:41:00+02:00" pubdate data-updated="true">Jul 14<span>th</span>, 2013</time></h5>
+<i class="icon-calendar-empty"></i> <time datetime="2013-07-23T22:18:00+02:00" pubdate data-updated="true">Jul 23<span>rd</span>, 2013</time></h5>
   </div>
 </header>
   <div class="row-fluid">
     <div class="span12">
-      <h2>UPDATE: Johnny-Five is fully working now! read more about it <a href="http://jvrbaena.github.io/2013-07-23-node-dot-js-arduino-raspberry-pi-reboot">here!</a></h2>
+      <p>This post is sort of a reboot for our Node.js, Arduino &amp; Raspberry Pi series (you can read previous articles <a href="http://jvrbaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/">here</a> and <a href="http://jvrbaena.github.io/blog/2013/07/15/node-dot-js-arduino-raspberry-pi-ii/">here</a>).</p>
 
-<p>I have recently completed a course about environmental monitorization with Arduino, and once completed, I decided
-that I wanted to go a little further in the use of Arduino with Javascript.</p>
+<p>As previously told, we were trying to control an Arduino board from a Raspberry Pi, and then turn that Raspberry Pi into an AP so that it could host a Node.js app and we could connect to it in order to control the Arduino.
+For this, we were using an <strong>Arduino Leonardo</strong> board.</p>
 
-<p>Some time ago, when I didn&rsquo;t have any Arduino board of my own, I already tinkered a little bit using the board of a friend, with the help of a library called <a href="https://github.com/rwldrn/johnny-five">Jhonny-Five</a> by <a href="http://twitter.com/rwaldron">@rwaldron</a>, which has become sort of the standard for using Arduino with Javascript (You can read more about javascript-controlled robots <a href="http://voodootikigod.com/nodebots-the-rise-of-js-robotics/">here</a>).</p>
+<p>So.. what are the news?</p>
 
 <!--more-->
 
 
-<p>However, the Arduino board I got with my course, was an Arduino Leonardo, not an Arduino UNO, which was the model of the board that we had used previously.
-Apparently, there are some issues with Johnny-Five that make it wise to compile it using the Arduino 1.0 IDE and Standard Firmata. The Arduino Leonardo does not appear as a selectable board in the Arduino 1.0 IDE, and, although there seems to exist some <a href="https://github.com/rwldrn/johnny-five/issues/53#issuecomment-11931914">workarounds</a>, I wasn&rsquo;t able to make it work (the board connected but didn&rsquo;t respond).</p>
+<p>Well, the news are: We are using now <strong><a href="https://github.com/rwldrn/johnny-five">Johnny-Five</a></strong>!!!
+<a href="http://twitter.com/rwaldron">Rick Waldron</a>, the author of Johnny-Five contacted me on Twitter when reading about my problems with the Leonardo board, and I want to thank him for his really helpful guidance on solving these problems! :D</p>
 
-<p>So! Fear not! I found another npm package for Javascript communication with Arduino: <a href="https://github.com/ecto/duino">Duino</a> and this one worked perfectly :)</p>
+<p>It turns out I had been coding with an older version of Johnny-Five and the current version already supported Leonardo boards! How cool is that?</p>
 
-<p>Load the duino framework to your Arduino board, and then, try:</p>
+<p>So I promptly cloned the repo, tested it out and it worked both from my Mac and from my Raspberry Pi!</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">arduino</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;duino&#39;</span><span class="p">),</span>
-</span><span class='line'>    <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">arduino</span><span class="p">.</span><span class="nx">Board</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">arduino</span><span class="p">.</span><span class="nx">Led</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">board</span><span class="o">:</span> <span class="nx">board</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">pin</span><span class="o">:</span> <span class="mi">13</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">led</span><span class="p">.</span><span class="nx">blink</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>These are <strong>GREAT</strong> news because, well, using duino worked, but it was sort of a <em>workaround</em> for not being able to use J5. Feels good to be a first-class citizen of the Nodebots community again!!!</p>
+
+<p>Using Johnny-Five gives us access to some great components:</p>
+
+<ul>
+<li>Servos</li>
+<li>Motors</li>
+<li>Claws</li>
+<li>Infrared</li>
+<li>Joysticks</li>
+<li>Giant Sized Javascript Controlled Robots Built For Fighting Gargantuan Alien Creatures</li>
+</ul>
 
 
-<p>And if you have correctly placed a LED in the PIN 13, you should be seeing it blinking right now.</p>
+<p><img src="/images/pacific-rim-jaeger.jpg" width="500" height="500" title="The Future of Nodebots" > &hellip; Well, that last point is not <em>yet</em> supported, but we are on our way!</p>
 
-<p>Ok! So now we are talking to our Arduino board from our laptop, using Javascript. Nice!
-But&hellip; although I think this is pretty cool, I don&rsquo;t like the fact that it is not so &ldquo;portable&rdquo;. I mean, if you want to develop some kind of cool stuff using Javascript to monitorize your orchard (for example), I don&rsquo;t think you&rsquo;ll want to leave your laptop in the field :).</p>
+<p>So, we are more or less in the same point that we were in our last post, BUT we are in a much better shape and with much better tools to better handle our project!</p>
 
-<p>So&hellip; enter the Raspberry Pi!</p>
+<p>In the following weeks, I&rsquo;ll be writing the backend for the Node.js app that will be hosted in our Raspberry Pi, in the meantime, here you have a lovely pic of our Raspberry Pi talking to our Arduino, now with j5!!</p>
 
-<p>What about deploying your code to a Raspberry Pi, talking to the Arduino board via serial port?</p>
-
-<p>Apparently it should work, as a Raspberry Pi should have no problem running Node.js&hellip; but I found a couple of problems I had to solve before seeing it working.</p>
-
-<p>We&rsquo;ll see this problems and how to solve them in the next post :)</p>
+<p><img class="left" src="/images/rpi-arduino-j5.jpg" width="500" height="500" title="Raspberry Pi talking to Arduino via Javascript using j5" ></p>
 
     </div>
   </div>
@@ -206,10 +194,8 @@ But&hellip; although I think this is pretty cool, I don&rsquo;t like the fact th
       <div class="span12">
         <p class="meta">
           
-            <a class="basic-alignment left" href="/blog/2013/07/02/currently-reading/" title="Previous Post: Currently Reading">&laquo; Currently Reading</a>
+            <a class="basic-alignment left" href="/blog/2013/07/15/node-dot-js-arduino-raspberry-pi-ii/" title="Previous Post: Node.js, Arduino & Raspberry Pi (II)">&laquo; Node.js, Arduino & Raspberry Pi (II)</a>
           
-          
-            <a class="basic-alignment right" href="/blog/2013/07/15/node-dot-js-arduino-raspberry-pi-ii/" title="Next Post: Node.js, Arduino & Raspberry Pi (II)">Node.js, Arduino & Raspberry Pi (II) &raquo;</a>
           
         </p>
       </div>
@@ -248,8 +234,8 @@ But&hellip; although I think this is pretty cool, I don&rsquo;t like the fact th
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://JvrBaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/';
-        var disqus_url = 'http://JvrBaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/';
+        var disqus_identifier = 'http://JvrBaena.github.io/blog/2013/07/23/node-dot-js-arduino-raspberry-pi-reboot/';
+        var disqus_url = 'http://JvrBaena.github.io/blog/2013/07/23/node-dot-js-arduino-raspberry-pi-reboot/';
         var disqus_script = 'embed.js';
       
     (function () {

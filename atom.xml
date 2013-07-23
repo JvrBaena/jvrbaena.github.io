@@ -4,7 +4,7 @@
   <title><![CDATA[Javier Baena]]></title>
   <link href="http://JvrBaena.github.io/atom.xml" rel="self"/>
   <link href="http://JvrBaena.github.io/"/>
-  <updated>2013-07-15T23:21:43+02:00</updated>
+  <updated>2013-07-23T22:59:36+02:00</updated>
   <id>http://JvrBaena.github.io/</id>
   <author>
     <name><![CDATA[Javier Baena]]></name>
@@ -14,11 +14,59 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Node.js, Arduino & Raspberry Pi: Reboot]]></title>
+    <link href="http://JvrBaena.github.io/blog/2013/07/23/node-dot-js-arduino-raspberry-pi-reboot/"/>
+    <updated>2013-07-23T22:18:00+02:00</updated>
+    <id>http://JvrBaena.github.io/blog/2013/07/23/node-dot-js-arduino-raspberry-pi-reboot</id>
+    <content type="html"><![CDATA[<p>This post is sort of a reboot for our Node.js, Arduino &amp; Raspberry Pi series (you can read previous articles <a href="http://jvrbaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/">here</a> and <a href="http://jvrbaena.github.io/blog/2013/07/15/node-dot-js-arduino-raspberry-pi-ii/">here</a>).</p>
+
+<p>As previously told, we were trying to control an Arduino board from a Raspberry Pi, and then turn that Raspberry Pi into an AP so that it could host a Node.js app and we could connect to it in order to control the Arduino.
+For this, we were using an <strong>Arduino Leonardo</strong> board.</p>
+
+<p>So.. what are the news?</p>
+
+<!--more-->
+
+
+<p>Well, the news are: We are using now <strong><a href="https://github.com/rwldrn/johnny-five">Johnny-Five</a></strong>!!!
+<a href="http://twitter.com/rwaldron">Rick Waldron</a>, the author of Johnny-Five contacted me on Twitter when reading about my problems with the Leonardo board, and I want to thank him for his really helpful guidance on solving these problems! :D</p>
+
+<p>It turns out I had been coding with an older version of Johnny-Five and the current version already supported Leonardo boards! How cool is that?</p>
+
+<p>So I promptly cloned the repo, tested it out and it worked both from my Mac and from my Raspberry Pi!</p>
+
+<p>These are <strong>GREAT</strong> news because, well, using duino worked, but it was sort of a <em>workaround</em> for not being able to use J5. Feels good to be a first-class citizen of the Nodebots community again!!!</p>
+
+<p>Using Johnny-Five gives us access to some great components:</p>
+
+<ul>
+<li>Servos</li>
+<li>Motors</li>
+<li>Claws</li>
+<li>Infrared</li>
+<li>Joysticks</li>
+<li>Giant Sized Javascript Controlled Robots Built For Fighting Gargantuan Alien Creatures</li>
+</ul>
+
+
+<p><img src="http://JvrBaena.github.io/images/pacific-rim-jaeger.jpg" width="500" height="500" title="The Future of Nodebots" > &hellip; Well, that last point is not <em>yet</em> supported, but we are on our way!</p>
+
+<p>So, we are more or less in the same point that we were in our last post, BUT we are in a much better shape and with much better tools to better handle our project!</p>
+
+<p>In the following weeks, I&rsquo;ll be writing the backend for the Node.js app that will be hosted in our Raspberry Pi, in the meantime, here you have a lovely pic of our Raspberry Pi talking to our Arduino, now with j5!!</p>
+
+<p><img class="left" src="http://JvrBaena.github.io/images/rpi-arduino-j5.jpg" width="500" height="500" title="Raspberry Pi talking to Arduino via Javascript using j5" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Node.js, Arduino & Raspberry Pi (II)]]></title>
     <link href="http://JvrBaena.github.io/blog/2013/07/15/node-dot-js-arduino-raspberry-pi-ii/"/>
     <updated>2013-07-15T22:41:00+02:00</updated>
     <id>http://JvrBaena.github.io/blog/2013/07/15/node-dot-js-arduino-raspberry-pi-ii</id>
-    <content type="html"><![CDATA[<p>In our <a href="http://jvrbaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/">last post</a> we talked about talking to Arduino with Javascript. We used the framework <a href="https://github.com/ecto/duino">Duino</a> as a workaround when your Arduino board, as mine, is not the best suited for running <a href="https://github.com/rwldrn/johnny-five">Jhonny-Five</a> (or if you can&rsquo;t manage to make it work, as it was my case).</p>
+    <content type="html"><![CDATA[<h2>UPDATE: Johnny-Five is fully working now! read more about it <a href="http://jvrbaena.github.io/2013-07-23-node-dot-js-arduino-raspberry-pi-reboot">here!</a></h2>
+
+<p>In our <a href="http://jvrbaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/">last post</a> we talked about talking to Arduino with Javascript. We used the framework <a href="https://github.com/ecto/duino">Duino</a> as a workaround when your Arduino board, as mine, is not the best suited for running <a href="https://github.com/rwldrn/johnny-five">Jhonny-Five</a> (or if you can&rsquo;t manage to make it work, as it was my case).</p>
 
 <p>Our next step: Repeat our current achievements from a Raspberry Pi connected to our Arduino board.</p>
 
@@ -161,7 +209,9 @@ The problem is that our Arduino board, when plugged into our Raspberry Pi, will 
     <link href="http://JvrBaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/"/>
     <updated>2013-07-14T22:41:00+02:00</updated>
     <id>http://JvrBaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi</id>
-    <content type="html"><![CDATA[<p>I have recently completed a course about environmental monitorization with Arduino, and once completed, I decided
+    <content type="html"><![CDATA[<h2>UPDATE: Johnny-Five is fully working now! read more about it <a href="http://jvrbaena.github.io/2013-07-23-node-dot-js-arduino-raspberry-pi-reboot">here!</a></h2>
+
+<p>I have recently completed a course about environmental monitorization with Arduino, and once completed, I decided
 that I wanted to go a little further in the use of Arduino with Javascript.</p>
 
 <p>Some time ago, when I didn&rsquo;t have any Arduino board of my own, I already tinkered a little bit using the board of a friend, with the help of a library called <a href="https://github.com/rwldrn/johnny-five">Jhonny-Five</a> by <a href="http://twitter.com/rwaldron">@rwaldron</a>, which has become sort of the standard for using Arduino with Javascript (You can read more about javascript-controlled robots <a href="http://voodootikigod.com/nodebots-the-rise-of-js-robotics/">here</a>).</p>
