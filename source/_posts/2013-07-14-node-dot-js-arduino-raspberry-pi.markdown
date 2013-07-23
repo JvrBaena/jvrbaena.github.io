@@ -5,6 +5,12 @@ date: 2013-07-14 22:41
 comments: true
 categories: 
 ---
+
+UPDATE: Johnny-Five is fully working now! read more about it [here!](http://jvrbaena.github.io/blog/2013/07/23/node-dot-js-arduino-raspberry-pi-reboot/)
+-------
+
+
+
 I have recently completed a course about environmental monitorization with Arduino, and once completed, I decided
 that I wanted to go a little further in the use of Arduino with Javascript.
 

@@ -5,6 +5,9 @@ date: 2013-07-15 22:41
 comments: true
 categories: 
 ---
+UPDATE: Johnny-Five is fully working now! read more about it [here!](http://jvrbaena.github.io/blog/2013/07/23/node-dot-js-arduino-raspberry-pi-reboot/)
+-------
+
 
 In our [last post](http://jvrbaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/) we talked about talking to Arduino with Javascript. We used the framework [Duino](https://github.com/ecto/duino) as a workaround when your Arduino board, as mine, is not the best suited for running [Jhonny-Five](https://github.com/rwldrn/johnny-five) (or if you can't manage to make it work, as it was my case).
 
