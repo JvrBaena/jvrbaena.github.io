@@ -4,7 +4,7 @@
   <title><![CDATA[Javier Baena]]></title>
   <link href="http://JvrBaena.github.io/atom.xml" rel="self"/>
   <link href="http://JvrBaena.github.io/"/>
-  <updated>2013-07-23T22:59:36+02:00</updated>
+  <updated>2013-07-23T23:01:20+02:00</updated>
   <id>http://JvrBaena.github.io/</id>
   <author>
     <name><![CDATA[Javier Baena]]></name>
@@ -64,7 +64,7 @@ For this, we were using an <strong>Arduino Leonardo</strong> board.</p>
     <link href="http://JvrBaena.github.io/blog/2013/07/15/node-dot-js-arduino-raspberry-pi-ii/"/>
     <updated>2013-07-15T22:41:00+02:00</updated>
     <id>http://JvrBaena.github.io/blog/2013/07/15/node-dot-js-arduino-raspberry-pi-ii</id>
-    <content type="html"><![CDATA[<h2>UPDATE: Johnny-Five is fully working now! read more about it <a href="http://jvrbaena.github.io/2013-07-23-node-dot-js-arduino-raspberry-pi-reboot">here!</a></h2>
+    <content type="html"><![CDATA[<h2>UPDATE: Johnny-Five is fully working now! read more about it <a href="http://jvrbaena.github.io/blog/2013/07/23/node-dot-js-arduino-raspberry-pi-reboot/">here!</a></h2>
 
 <p>In our <a href="http://jvrbaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/">last post</a> we talked about talking to Arduino with Javascript. We used the framework <a href="https://github.com/ecto/duino">Duino</a> as a workaround when your Arduino board, as mine, is not the best suited for running <a href="https://github.com/rwldrn/johnny-five">Jhonny-Five</a> (or if you can&rsquo;t manage to make it work, as it was my case).</p>
 
@@ -209,7 +209,7 @@ The problem is that our Arduino board, when plugged into our Raspberry Pi, will 
     <link href="http://JvrBaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi/"/>
     <updated>2013-07-14T22:41:00+02:00</updated>
     <id>http://JvrBaena.github.io/blog/2013/07/14/node-dot-js-arduino-raspberry-pi</id>
-    <content type="html"><![CDATA[<h2>UPDATE: Johnny-Five is fully working now! read more about it <a href="http://jvrbaena.github.io/2013-07-23-node-dot-js-arduino-raspberry-pi-reboot">here!</a></h2>
+    <content type="html"><![CDATA[<h2>UPDATE: Johnny-Five is fully working now! read more about it <a href="http://jvrbaena.github.io/blog/2013/07/23/node-dot-js-arduino-raspberry-pi-reboot/">here!</a></h2>
 
 <p>I have recently completed a course about environmental monitorization with Arduino, and once completed, I decided
 that I wanted to go a little further in the use of Arduino with Javascript.</p>
